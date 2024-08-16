@@ -30,13 +30,13 @@ export async function getProjects(app: FastifyInstance) {
                   slug: z.string(),
                   description: z.string(),
                   ownerId: z.string(),
-                  avatarUrl: z.string().nullable(),
+                  avatarUrl: z.string().url().nullable(),
                   organizationId: z.string().uuid(),
                   createdAt: z.date(),
                   owner: z.object({
                     id: z.string(),
                     name: z.string().nullable(),
-                    avatarUrl: z.string().nullable(),
+                    avatarUrl: z.string().url().nullable(),
                   }),
                 }),
               ),
@@ -86,7 +86,7 @@ export async function getProjects(app: FastifyInstance) {
           },
         })
 
-        return reply.status(20).send({
+        return reply.status(200).send({
           projects,
         })
       },
