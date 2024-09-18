@@ -18,7 +18,7 @@ export async function acceptInvite(app: FastifyInstance) {
           tags: ['Invites'],
           summary: 'Accept an invite',
           params: z.object({
-            inviteId: z.string().uuid(),
+            inviteId: z.string().cuid2(),
           }),
           response: {
             204: z.null(),

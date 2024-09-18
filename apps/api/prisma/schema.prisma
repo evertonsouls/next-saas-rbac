@@ -104,7 +104,7 @@ model Organization {
   id                        String   @id @default(cuid())
   name                      String
   slug                      String   @unique
-  domain                    String?  @unique
+  domain                    String?
   shouldAttachUsersByDomain Boolean  @default(false) @map("should_attach_users_by_domain")
   avatarUrl                 String?  @map("avatar_url")
   createdAt                 DateTime @default(now()) @map("created_at")
@@ -117,6 +117,7 @@ model Organization {
   members  Member[]
   projects Project[]
 
+  @@unique([slug, domain])
   @@map("organizations")
 }
 

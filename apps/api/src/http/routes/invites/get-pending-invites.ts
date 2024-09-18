@@ -22,13 +22,16 @@ export async function getPendingInvites(app: FastifyInstance) {
             200: z.object({
               invites: z.array(
                 z.object({
-                  id: z.string().uuid(),
+                  id: z.string().cuid2(),
                   email: z.string().email(),
                   role: roleSchema,
                   createdAt: z.date(),
+                  organization: z.object({
+                    name: z.string(),
+                  }),
                   author: z
                     .object({
-                      id: z.string().uuid(),
+                      id: z.string().cuid2(),
                       name: z.string().nullable(),
                       email: z.string().email(),
                       avatarUrl: z.string().url().nullable(),
@@ -61,6 +64,11 @@ export async function getPendingInvites(app: FastifyInstance) {
             email: true,
             role: true,
             createdAt: true,
+            organization: {
+              select: {
+                name: true,
+              },
+            },
             author: {
               select: {
                 id: true,

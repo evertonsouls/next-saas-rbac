@@ -25,16 +25,16 @@ export async function getProjects(app: FastifyInstance) {
             200: z.object({
               projects: z.array(
                 z.object({
-                  id: z.string().uuid(),
+                  id: z.string().cuid2(),
                   name: z.string(),
                   slug: z.string(),
                   description: z.string(),
                   ownerId: z.string(),
                   avatarUrl: z.string().url().nullable(),
-                  organizationId: z.string().uuid(),
+                  organizationId: z.string().cuid2(),
                   createdAt: z.date(),
                   owner: z.object({
-                    id: z.string(),
+                    id: z.string().cuid2(),
                     name: z.string().nullable(),
                     avatarUrl: z.string().url().nullable(),
                   }),

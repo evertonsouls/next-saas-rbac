@@ -5,7 +5,6 @@ import z from 'zod'
 
 import { auth } from '@/http/middlewares/auth'
 import { prisma } from '@/lib/prisma'
-import { createSlug } from '@/utils/create-slug'
 import { getUserPermissions } from '@/utils/get-user-permissions'
 
 import { BadRequestError } from '../_errors/bad-request-error'
@@ -76,15 +75,7 @@ export async function updateOrganization(app: FastifyInstance) {
           data: {
             name,
             domain,
-            slug: createSlug(name),
             shouldAttachUsersByDomain,
-            ownerId: userId,
-            members: {
-              create: {
-                userId,
-                role: 'ADMIN',
-              },
-            },
           },
         })
 

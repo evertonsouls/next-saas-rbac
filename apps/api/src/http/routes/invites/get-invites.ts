@@ -26,13 +26,13 @@ export async function getInvites(app: FastifyInstance) {
             200: z.object({
               invites: z.array(
                 z.object({
-                  id: z.string().uuid(),
+                  id: z.string().cuid2(),
                   email: z.string().email(),
                   role: roleSchema,
                   createdAt: z.date(),
                   author: z
                     .object({
-                      id: z.string().uuid(),
+                      id: z.string().cuid2(),
                       name: z.string().nullable(),
                       email: z.string().email(),
                       avatarUrl: z.string().url().nullable(),

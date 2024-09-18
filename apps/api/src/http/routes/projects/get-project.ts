@@ -27,13 +27,13 @@ export async function getProject(app: FastifyInstance) {
           response: {
             200: z.object({
               project: z.object({
-                id: z.string().uuid(),
+                id: z.string().cuid2(),
                 name: z.string(),
                 slug: z.string(),
                 description: z.string(),
                 ownerId: z.string(),
                 avatarUrl: z.string().url().nullable(),
-                organizationId: z.string().uuid(),
+                organizationId: z.string().cuid2(),
                 owner: z.object({
                   id: z.string(),
                   name: z.string().nullable(),

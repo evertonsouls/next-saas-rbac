@@ -20,7 +20,7 @@ export async function removeMember(app: FastifyInstance) {
           security: [{ bearerAuth: [] }],
           params: z.object({
             slug: z.string(),
-            memberId: z.string().uuid(),
+            memberId: z.string().cuid2(),
           }),
           response: {
             204: z.null(),

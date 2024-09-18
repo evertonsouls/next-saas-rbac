@@ -28,7 +28,7 @@ export async function createProject(app: FastifyInstance) {
           }),
           response: {
             201: z.object({
-              projectId: z.string().uuid(),
+              projectId: z.string().cuid2(),
             }),
           },
         },

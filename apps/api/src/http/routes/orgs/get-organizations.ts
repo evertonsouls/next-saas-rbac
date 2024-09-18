@@ -58,6 +58,9 @@ export async function getOrganizations(app: FastifyInstance) {
               },
             },
           },
+          orderBy: {
+            name: 'asc',
+          },
         })
 
         const organizationsWithUserRole = organizations.map(

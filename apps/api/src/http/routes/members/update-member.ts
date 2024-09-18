@@ -21,7 +21,7 @@ export async function updateMembers(app: FastifyInstance) {
           security: [{ bearerAuth: [] }],
           params: z.object({
             slug: z.string(),
-            memberId: z.string().uuid(),
+            memberId: z.string().cuid2(),
           }),
           body: z.object({
             role: roleSchema,
